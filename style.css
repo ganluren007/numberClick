@@ -1,0 +1,120 @@
+/* 导入手写风格字体 */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Caveat', cursive;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 网格容器 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 10px 0;
+    max-width: 800px;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* 数字样式 */
+.number-item {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a73e8;
+    text-align: center;
+    position: relative;
+    padding: 10px 0;
+    border-bottom: 2px solid #1a73e8;
+    /* 手写效果 */
+    /* transform: rotate(-0.5deg); */
+    transition: transform 0.2s ease;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* .number-item:hover {
+    transform: rotate(0deg) scale(1.1);
+} */
+
+/* 调整网格行间距 */
+.grid-container > div:nth-child(9n) {
+    border-right: none;
+}
+
+/* 绿色圆圈特效 */
+.green-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid #4CAF50;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: circleFade 2s ease-out forwards;
+    z-index: 10;
+}
+
+@keyframes circleFade {
+    0% {
+        opacity: 0;
+        transform: translate(-40%, -50%) scale(0);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-40%, -50%) scale(0.8);
+    }
+    40% {
+        opacity: 1;
+        transform: translate(-40%, -50%) scale(0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-40%, -50%) scale(0.95);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-40%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-40%, -50%) scale(1);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(9, 1fr);
+        gap: 5px 3px;
+        padding: 10px;
+    }
+    
+    .number-item {
+        font-size: 16px;
+        padding: 5px 0;
+    }
+}
