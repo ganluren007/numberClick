@@ -1,46 +1,18 @@
 // 获取网格容器
 const gridContainer = document.getElementById('numberGrid');
 
-// 创建音频上下文用于播放提示音
-let audioContext = null;
-
-// 初始化音频上下文（需要在用户交互后创建）
-function initAudioContext() {
-    if (!audioContext) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    }
-}
+// 创建音频对象用于播放提示音
+const dingAudio = new Audio('ding.mp3');
+dingAudio.volume = 1.0;
 
 // 播放"叮"的提示音
 function playDingSound() {
-    if (!audioContext) {
-        initAudioContext();
-    }
-    
-    if (audioContext) {
-        // 创建振荡器
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
-        
-        // 连接节点
-        oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
-        
-        // 使用方波产生类似铃铛的金属质感
-        oscillator.type = 'square';
-        
-        // 频率：1046Hz (C6)，经典的铃铛音调
-        oscillator.frequency.setValueAtTime(1046, audioContext.currentTime);
-        
-        // 音量包络 - 模拟敲击铃铛后的自然衰减
-        const now = audioContext.currentTime;
-        gainNode.gain.setValueAtTime(0.6, now);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
-        
-        // 播放声音
-        oscillator.start(now);
-        oscillator.stop(now + 0.6);
-    }
+    // 重置音频到开头并播放
+    dingAudio.currentTime = 0;
+    dingAudio.play().catch(e => {
+        // 如果播放失败（例如用户还没有交互），忽略错误
+        console.log('音频播放失败:', e);
+    });
 }
 
 // 生成1-100的数字，跳过68
@@ -55,9 +27,6 @@ for (let i = 1; i <= 100; i++) {
     
     // 添加点击事件
     numberItem.addEventListener('click', function() {
-        // 初始化音频上下文
-        initAudioContext();
-        
         // 播放提示音
         playDingSound();
         
