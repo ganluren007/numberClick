@@ -116,6 +116,7 @@ body {
     .grid-container {
          height: 46%;
         padding: 10px;
+        margin-top: -20%;
     }
     
     .number-item {
