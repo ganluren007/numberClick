@@ -57,7 +57,7 @@ body {
     z-index: 1;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    aspect-ratio: 1;
+    /* aspect-ratio: 1; */
 }
 
 /* .number-item:hover {
@@ -75,8 +75,8 @@ body {
     top: 50%;
     left: 40%;
     transform: translate(-30%, -50%);
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border: 3px solid #4CAF50;
     border-radius: 50%;
     pointer-events: none;
@@ -114,7 +114,7 @@ body {
 /* 响应式设计 */
 @media (max-width: 600px) {
     .grid-container {
-        /* gap: 5px; */
+         height: 46%;
         padding: 10px;
     }
     
