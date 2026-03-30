@@ -43,10 +43,10 @@ body {
 .number-item {
     font-size: 24px;
     font-weight: 900;
-    color: #1a73e8;
+    color: #000;
     text-align: center;
     position: relative;
-    border-bottom: 2px solid #1a73e8;
+    border-bottom: 2px solid #000;
     /* 手写效果 */
     /* transform: rotate(-0.5deg); */
     transition: transform 0.2s ease;
@@ -75,9 +75,9 @@ body {
     top: 50%;
     left: 40%;
     transform: translate(-30%, -50%);
-    width: 37px;
-    height: 37px;
-    border: 3px solid #4CAF50;
+    width: 42px;
+    height: 42px;
+    border: 3px solid #f44336;
     border-radius: 50%;
     pointer-events: none;
     animation: circleFade 2s ease-out forwards;
@@ -114,9 +114,9 @@ body {
 /* 响应式设计 */
 @media (max-width: 600px) {
     .grid-container {
-         height: 46%;
+         /* height: 46%; */
         padding: 10px;
-        margin-top: -20%;
+        margin-top: -28%;
     }
     
     .number-item {
